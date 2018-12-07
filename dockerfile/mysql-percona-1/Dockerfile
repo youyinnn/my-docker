@@ -6,6 +6,6 @@ EXPOSE 3306
 
 COPY ./pre.sql /pre.sql
 
-ENTRYPOINT [ "mysqld" ]
+COPY ./run.sh /run.sh
 
-RUN echo "xixi"
+CMD ["bash", "/run.sh"]
