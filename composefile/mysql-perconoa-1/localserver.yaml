@@ -18,6 +18,8 @@ services:
     ports:
       - target: 3306
         published: 3308
+        protocol: tcp
+        mode: host
     environment:
         MYSQL_ROOT_PASSWORD: numessage
     volumes:
@@ -38,6 +40,8 @@ services:
     ports:
       - target: 2181
         published: 2181
+        protocol: tcp
+        mode: host
   numsglocal:
     image: ecr.vip.ebayc3.com/numessage/numsg:local-latest
     networks:
@@ -53,6 +57,8 @@ services:
     ports:
       - target: 8090
         published: 8090
+        protocol: tcp
+        mode: host
     environment:
         JACOCO_ENABLE: "true"
         NUMSG_SERVER_LOCALIZED: "true"
