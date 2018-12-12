@@ -1,19 +1,32 @@
-version: "3"
+version: "3.7"
 services:
-  web:
+  web1:
     # replace username/repo:tag with your name and image details
-    image: youyinnn/getstarted:tag1
+    image: nginx
     deploy:
-      replicas: 3
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
+      replicas: 1
       restart_policy:
         condition: on-failure
     ports:
-      - "4000:80"
+      - target: 80
+        published: 5001
+        protocol: tcp
+        mode: host
     networks:
-      - webnet
+      app_net: {}
+  web2:
+    # replace username/repo:tag with your name and image details
+    image: nginx
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 80
+        published: 5002
+        protocol: tcp
+        mode: host
+    networks:
+      app_net: {}
 networks:
-  webnet:
+  app_net:
